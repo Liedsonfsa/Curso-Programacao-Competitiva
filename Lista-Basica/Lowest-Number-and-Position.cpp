@@ -8,20 +8,26 @@ int main() {
     
     cin >> n;
     
-    int v[n];
-    
+    vector<int> array;
+
     for(i = 0; i < n; i++){
-        cin >> v[i];
+        int num;
+
+        cin >> num;
+
         if(i == 0){
-            menor = v[i];
-            pos = i;
+            menor = num;
         }
-        
-        if(v[i] < menor){
-            menor = v[i];
+
+        array.push_back(num);
+
+
+        if(array[i] < menor){
+            menor = num;
             pos = i;
         }
     }
+
     
     cout << "Menor valor: " << menor << endl;
     cout << "Posicao: " << pos << endl;

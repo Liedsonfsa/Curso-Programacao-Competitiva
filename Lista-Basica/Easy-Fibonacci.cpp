@@ -8,16 +8,17 @@ int main() {
 
     cin >> n;
 
-    int v[n];
+    vector<int> array;
 
-    v[0] = 0;
-    v[1] = 1;
+    array.push_back(0);
+    array.push_back(1);
 
-    cout << v[0] << " " << v[1];
+    cout << array[0] << " " << array[1];
 
     for(i = 2; i < n; i++){
-        v[i] = v[i - 1] + v[i - 2];
-        cout << " " << v[i];
+        array.push_back(array[i - 1] + array[i - 2]);
+        
+        cout << " " << array[i];
     }
 
     cout << endl;

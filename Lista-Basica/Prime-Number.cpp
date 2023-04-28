@@ -27,7 +27,7 @@ int main() {
             cout << x << " eh primo" << endl;
         }
 
-
+        
     }
 
     return 0;

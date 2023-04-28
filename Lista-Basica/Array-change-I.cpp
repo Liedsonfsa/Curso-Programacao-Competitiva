@@ -4,14 +4,16 @@ using namespace std;
  
 int main() {
  
-    int v[20], i, l = 0;
+    int n, i, l = 0;
+    vector<int> array;
     
     for(i = 0; i < 20; i++){
-        cin >> v[i];
+        cin >> n;
+        array.push_back(n);
     }
     
     for(i = 20 - 1; i >= 0; i--){
-        cout << "N[" << l << "] = " << v[i] <<  endl;
+        cout << "N[" << l << "] = " << array[i] <<  endl;
         l++;
     }
  
