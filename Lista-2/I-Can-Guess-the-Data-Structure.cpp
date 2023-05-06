@@ -8,13 +8,14 @@ int main() {
 
     while(cin >> n){
         int maior, ultimo, primeiro, pd;
-        int q = 0, s = 0, i = 0;
+        bool q = false, s = false, i = false;
         bool priority = false, pop = true;
         //vector <int> push, pop;
         stack <int> pilha;
         queue <int> fila;
         priority_queue <int> pq;
         int l = 0;
+
         while( n-- ){
             int op, valor;
 
@@ -24,33 +25,25 @@ int main() {
 
             if(valor > maior) maior = valor;
 
-            pilha.push(valor);
-            fila.push(valor);
-            pq.push(valor);
-
-            if(op == 2 && pq.top() == maior && pop == true){
-                pq.pop();
-                priority = true;
-                pop = false;
+            if(op == 1){
+                pilha.push(valor);
+                fila.push(valor);
+                pq.push(valor);
             }
+
+            if(op == 2){
+                if(valor == fila.front()){
+                    
+                }
+            }
+
+           
+
 
             l++;
             
         }
 
-
-        if(priority){
-            cout << "priority queue" << endl;
-        } else if(pilha.top() == fila.front()){
-            cout << "not sure" << endl;
-        } else if(pilha.top() == fila.back()){
-            cout << "queue" << endl;
-        } 
-
-        
-
-
-       
         
     }
 
