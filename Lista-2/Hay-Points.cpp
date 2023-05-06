@@ -4,40 +4,35 @@ using namespace std;
 
 int main() {
 
-    map <string, double> map;
+    map <string, double> m;
 
-    int n, m;
+    int qtd_palavras, qtd_desc;
 
-    cin >> n >> m;
+    cin >> qtd_palavras >> qtd_desc;
 
-    
-
-    while( n-- ){
-
+    while( qtd_palavras-- ){
         string cargo;
         double salario;
-        
+
         cin >> cargo >> salario;
 
-        map[cargo] = salario;
+        m[cargo] = salario;
     }
 
-    string descricao = "";
-    double soma = 0;
-    
+    while( qtd_desc-- ){
+        double s = 0;
+        string desc;
 
-    while( descricao != '.'){
-        cin >> descricao;
-
-        for (auto i : map){
-            if(i.first == descricao){
-                soma += i.second;
+        while(cin >> desc){
+            if(desc == "."){
+                break;
             }
+
+            s += m[desc];
         }
 
+        cout << s << endl;
     }
-
-    cout << soma << endl;
     
     return 0;
 }
