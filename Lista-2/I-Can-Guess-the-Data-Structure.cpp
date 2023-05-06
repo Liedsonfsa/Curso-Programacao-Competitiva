@@ -7,10 +7,10 @@ int main() {
     int n;
 
     while(cin >> n){
-        int maior, ultimo, primeiro;
+        int maior, ultimo, primeiro, pd;
         int q = 0, s = 0, i = 0, pq = 0;
         vector <int> push, pop;
-        stack <int> pilha;
+        stack <int> pilha, pilha2;
         int l = 0;
         while( n-- ){
             int op, valor;
@@ -30,17 +30,19 @@ int main() {
                 maior = valor;
             }
 
+            
+
             if(op == 1){
-                push.push_back(valor);
+                pilha.push(valor);
             } else{
-                pop.push_back(valor);
+                pilha2.push(valor);
             } 
         }
 
 
-        if(push[0] == pop[0]){
+        if(pilha.top() == pilha2.top()){
             cout << "queue" << endl;
-        } else if(pop[0] == maior && (pop[0] == push[push.size() - 1])){
+        } else if(pilha2.top() == primeiro){
             cout << "not sure" << endl;
         } else if(pop[0] == push[push.size() - 1]){
             cout << "stack" << endl;
