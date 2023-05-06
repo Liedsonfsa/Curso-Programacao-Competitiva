@@ -9,49 +9,44 @@ int main() {
     cin >> n;
 
     while( n-- ){
-        stack <string> frutas;
-        stack <double> precos;
+        map <string, double> compras;
 
         int qtdf, qtdc;
 
         cin >> qtdf;
 
         while( qtdf-- ){
-            string f;
-            double p;
+            string fruta;
+            double valor;
 
-            cin >> f >> p;
+            cin >> fruta >> valor;
 
-            frutas.push(f);
-            precos.push(p);
+            compras[fruta] = valor;
         }
+
+
 
         cin >> qtdc;
-        pair<string, double> lista[qtdc];
+        double total = 0;
 
-        int i = 0;
-        while( i < qtdc ){
-            cin >> lista[i].first >> lista[i].second;
-            i++;
-        }
+        while( qtdc-- ){
+            string fruta;
+            double qtd, t = 0;
 
-        double total_pagar, soma = 0;
 
-        for(int i = 0; i < frutas.size(); i++){
-            if(lista[i].first == frutas.top()){
-                total_pagar = lista[i].second * precos.top();
-                frutas.pop();
-                precos.pop();
-            } else{
-                frutas.pop();
-                precos.pop();
+            cin >> fruta >> qtd;
+
+            if(compras[fruta]){
+                t += compras[fruta];
+                t *= qtd;
             }
 
-            soma += total_pagar;
+            total += t;
+
         }
 
-
-        cout << "R$ " << fixed << setprecision(2) << soma << endl;
+       
+        cout << "R$ " << fixed << setprecision(2) << total << endl;
 
     }
 
