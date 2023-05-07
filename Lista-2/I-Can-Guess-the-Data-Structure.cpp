@@ -7,13 +7,11 @@ int main() {
     int n;
 
     while(cin >> n){
-        int maior, ultimo, primeiro, pd;
-        bool q = false, s = false, i = false;
-        bool priority = false, pop = true;
-        //vector <int> push, pop;
         stack <int> pilha;
         queue <int> fila;
         priority_queue <int> pq;
+
+        int p = 0, q = 0, prq = 0, nt = 0, i = 0;
         int l = 0;
 
         while( n-- ){
@@ -21,28 +19,46 @@ int main() {
 
             cin >> op >> valor;
 
-            if(l == 0) maior = valor;
-
-            if(valor > maior) maior = valor;
-
             if(op == 1){
                 pilha.push(valor);
                 fila.push(valor);
                 pq.push(valor);
             }
 
-            if(op == 2){
-                if(valor == fila.front()){
-                    
+            if(op == 2 && l == 0){
+                if(fila.front() == valor && valor != pq.top() && valor != pilha.top()){
+                    q = 1;
+                } else if(pq.top() == pilha.top()){
+                    nt = 1;
+                } else if(valor == pilha.top() && valor != fila.front() && valor != pq.top()){
+                    p = 1;
+                } else if(valor == pq.top()){
+                    prq = 1;
+                } else if(valor != pilha.top() && valor != fila.front() && valor != pq.top()){
+                    i = 1;
                 }
+
+                l++;
+
+
             }
-
-           
-
-
-            l++;
-            
+ 
         }
+
+
+        if((p + q + prq) == 1 && nt == 0){
+            if(p == 1){
+                cout << "stack" << endl;
+            } else if(q == 1){
+                cout << "queue" << endl;
+            } else if(prq == 1){
+                cout << "priority queue" << endl;
+            }
+        } else if((p + q + prq) >= 1){
+            cout << "not sure" << endl;
+        }else if(i == 1){
+            cout << "impossible" << endl;
+        } 
 
         
     }

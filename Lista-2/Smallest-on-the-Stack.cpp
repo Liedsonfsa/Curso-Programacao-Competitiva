@@ -4,14 +4,15 @@ using namespace std;
 
 int main() {
 
+    ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); 
+
     int n;
 
     cin >> n;
 
     stack <int> pilha;
-    priority_queue<int, vector<int>, greater<int> > pq;
-    //int emp = 0;
-
+    multiset <int> num;
+   
     while( n-- ){
         string operacao;
         int valor;
@@ -22,19 +23,25 @@ int main() {
             cin >> valor;
 
             pilha.push(valor);
-            pq.push(valor);
-            //emp++;
+            num.insert(valor);
         }
 
         if(operacao[0] == 'M'){
-            cout << pq.top() << endl;
+            if(pilha.empty()){
+                cout << "empty" << endl;
+            } else{
+                cout << *num.begin() << endl;
+            }
         }
 
         if(operacao[1] == 'O'){
-            if(pilha.top() == pq.top()){
-                pq.pop();
+            if(pilha.empty()){
+                cout << "empty" << endl;
+            } else{
+                num.erase(pilha.top());
+                pilha.pop();
             }
-            pilha.pop();
+            
         }
 
         
