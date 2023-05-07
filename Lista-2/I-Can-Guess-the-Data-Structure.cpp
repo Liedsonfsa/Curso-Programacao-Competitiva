@@ -11,8 +11,11 @@ int main() {
         queue <int> fila;
         priority_queue <int> pq;
 
-        int p = 0, q = 0, prq = 0, nt = 0, i = 0;
-        int l = 0;
+        bool queue, stack, priority_q;
+
+        queue = true;
+        stack = true;
+        priority_q = true;
 
         while( n-- ){
             int op, valor;
@@ -25,45 +28,42 @@ int main() {
                 pq.push(valor);
             }
 
-            if(op == 2 && l == 0){
-                if(fila.front() == valor && valor != pq.top() && valor != pilha.top()){
-                    q = 1;
-                } else if(pq.top() == pilha.top()){
-                    nt = 1;
-                } else if(valor == pilha.top() && valor != fila.front() && valor != pq.top()){
-                    p = 1;
-                } else if(valor == pq.top()){
-                    prq = 1;
-                } else if(valor != pilha.top() && valor != fila.front() && valor != pq.top()){
-                    i = 1;
+            if(op == 2){
+                if(fila.front() == valor){
+                    fila.pop();
+                } else{
+                    queue = false;
                 }
 
-                l++;
+                if(pilha.top() == valor){
+                    pilha.pop();
+                } else{
+                    stack = false;
+                }
 
-
-            }
+                if(pq.top() == valor){
+                    pq.pop();
+                } else{
+                    priority_q = false;
+                }
  
+            }
         }
 
-
-        if((p + q + prq) == 1 && nt == 0){
-            if(p == 1){
-                cout << "stack" << endl;
-            } else if(q == 1){
-                cout << "queue" << endl;
-            } else if(prq == 1){
-                cout << "priority queue" << endl;
-            }
-        } else if((p + q + prq) >= 1){
+        if (stack && !queue && !priority_q) {
+            cout << "stack" << endl;
+        } else if (!stack && queue && !priority_q) {
+            cout << "queue" << endl;
+        } else if (!stack && !queue && priority_q) {
+            cout << "priority queue" << endl;
+        } else if (stack || queue || priority_q) {
             cout << "not sure" << endl;
-        }else if(i == 1){
+        } else if (!stack && !queue && !priority_q) {
             cout << "impossible" << endl;
-        } 
+        }
 
-        
     }
 
-    
     
     return 0;
 }
