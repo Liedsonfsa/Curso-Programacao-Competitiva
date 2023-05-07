@@ -35,7 +35,7 @@ int main() {
 
     }
 
-    cout << op << endl;
+    printf("%d\n", op);
     
     return 0;
 }
