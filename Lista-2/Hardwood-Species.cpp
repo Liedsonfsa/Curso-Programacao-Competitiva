@@ -7,26 +7,25 @@ int main() {
     int n;
 
     cin >> n;
+
+    cout << endl;
+
+    int c = 1;
    
 
     while(n--){
-        cout << endl;
         string s;
         double q = 0.0;
+        if(c != 1) cout << endl;
         map <string, int> especies;
-        fflush(stdin);
+        //fflush(stdin);
         while(getline(cin, s)){
             if(s.size() == 0) break;
-            if(especies[s]){
-                especies[s] += 1;
-            } else{
-                especies[s] = 1;
-            }
-
+            especies[s]++;
             q++;
         }
 
-        fflush(stdin);
+        //fflush(stdin);
 
         for(auto x: especies){
             double perc;
@@ -34,6 +33,8 @@ int main() {
             perc = double((x.second * 100) / q);
             cout << x.first << " " << fixed << setprecision(4) << perc << endl;
         }
+
+        c++;
 
 
     }
