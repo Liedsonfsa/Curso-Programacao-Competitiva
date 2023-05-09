@@ -12,6 +12,7 @@ int main() {
    
     multiset <int> ms;
   
+    // https://cp-algorithms.com/data_structures/stack_queue_modification.html
   
     while( n-- ){
         char operacao[4];

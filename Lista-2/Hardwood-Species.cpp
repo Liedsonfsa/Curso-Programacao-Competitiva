@@ -8,7 +8,8 @@ int main() {
 
     cin >> n;
 
-    cout << endl;
+    cin.ignore();
+    cin.ignore();
 
     int c = 1;
    
@@ -17,15 +18,14 @@ int main() {
         string s;
         double q = 0.0;
         if(c != 1) cout << endl;
+
         map <string, int> especies;
-        //fflush(stdin);
+        
         while(getline(cin, s)){
             if(s.size() == 0) break;
             especies[s]++;
             q++;
         }
-
-        //fflush(stdin);
 
         for(auto x: especies){
             double perc;
