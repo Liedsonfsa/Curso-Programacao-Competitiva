@@ -27,42 +27,64 @@ using namespace __gnu_pbds;
  
 #define ordered_set tree<os_type, null_type,less<os_type>, rb_tree_tag,tree_order_statistics_node_update>
  
-int N, K;
+string A, B;
+ 
+bool check_substring(string &aux)
+{
+    int i = 0, j = 0;
+ 
+    while (i < A.size() && j < aux.size())
+    {
+        if (A[i] == aux[j])
+            j++;
+        i++;
+    }
+ 
+    return j == aux.size();
+}
+ 
+bool check(int tam)
+{
+    string aux = "";
+ 
+    for (auto x : B)
+        for (int i = 0; i < tam; i++)
+            aux += x;
+ 
+    return check_substring(aux);
+}
  
 int main(int argc, char** argv)
 {
     optimize;
  
-    cin >> N >> K;
+    int T;
  
-    vi valores(N);
+    cin >> T;
  
-    for (auto &x : valores) 
-        cin >> x;
- 
-    ll ans = 0, soma = 0;
- 
-    unordered_map<ll, int> freq;
- 
-    freq[0] = 1;
-    // prefix_sum.push_back(0);
- 
-    for (auto x : valores)
+    while(T--)
     {
-        soma += x;
+        cin >> A >> B;
  
-        ll falta = soma - K;
+        int l = 0, r = A.size() / B.size(), mid, ans = 0;
  
-        // int qtd = upper_bound(ALL(prefix_sum), falta) - lower_bound(ALL(prefix_sum), falta);
-        int qtd = freq[falta];
+        while (l <= r)
+        {
+            mid = (l + r) / 2;
  
-        freq[soma]++;
-        // prefix_sum.PB(soma);
-        ans += qtd;
+            if (check(mid) == true)
+            {
+                ans = mid;
+                l = mid + 1;
+            }
+            else
+            {
+                r = mid - 1;
+            }
+        }
+ 
+        cout << ans << endl;
     }
- 
- 
-    cout << ans << endl;
  
     return 0;
 }
