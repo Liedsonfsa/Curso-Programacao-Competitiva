@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 #define optimize ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define INF 100000010
 #define ALL(x) x.begin(), x.end()
@@ -21,9 +23,8 @@
 #define endl '\n'
  
 using namespace std;
-//using namespace __gnu_pbds;
-
-
+using namespace __gnu_pbds;
+ 
 #define ordered_set tree<os_type, null_type,less<os_type>, rb_tree_tag,tree_order_statistics_node_update>
  
 int N, A;
@@ -42,49 +43,56 @@ ld calcula_area(ld altura_corte)
     return area;
 }
  
-int main()
+int main(int argc, char** argv)
 {
     optimize;
  
     while ((cin >> N >> A) && (N != 0 || A != 0))
     {
         alturas.resize(N);
-
+ 
         ll soma = 0;
-
-        for( auto &x : alturas){
+ 
+        for (auto &x : alturas)
+        {
             cin >> x;
-            
+ 
             soma += x;
         }
-
-        if(soma < A){
+ 
+        if (soma < A)
+        {
             cout << "-.-" << endl;
             continue;
         }
-
-        if(soma == A){
+ 
+        if (soma == A)
+        {
             cout << ":D" << endl;
             continue;
         }
-
+ 
         ld l = 0, r = 1e9, m;
-
-        while(abs(r - l) > EPS){
-            m = (r + l) / 2.0;
-
+ 
+        while (abs(r - l) > EPS)
+        {
+            m = (l + r) / 2.0;
+ 
             ld area = calcula_area(m);
-
-            if(area >= A){
+ 
+            if (area >= A)
+            {
                 l = m;
-            } else{
+            }
+            else
+            {
                 r = m;
             }
         }
-
+ 
+ 
         cout << setprecision(4) << fixed << l << endl;
     }
  
     return 0;
 }
- 
