@@ -21,24 +21,19 @@ using namespace std;
 #define EB emplace_back
 #define MOD 1000000007
 #define PRIME 101
-#define MAXN 101010
+#define MAXN 70
 #define MAXL 23
 #define endl '\n'
-
-int n;
 
 ll dp[MAXN];
 
 ll fib(int n){
-    if(n == 0){
-        return 0;
-    }
+    if(n <= 1) return n;
+    
+    // ~ inverte os bits
+    //if(~dp[n]) return dp[n];
 
-    if(n == 1){
-        return 1;
-    }
-
-    if(dp[n] != 0){
+    if(dp[n] != -1){
         return dp[n];
     }
 
@@ -49,20 +44,19 @@ int main() {
 
     optimize;
 
-    memset(dp, 0, sizeof(dp));
+    int n;
+
+    memset(dp, -1, sizeof dp);
 
     cin >> n;
 
     int num;
-    ll r;
 
     for(int i = 0; i < n; i++){
 
         cin >> num;
 
-        r = fib(num);
-
-        cout << "Fib(" << num << ") = " << r << endl;
+        cout << "Fib(" << num << ") = " << fib(num) << endl;
     }
 
 
