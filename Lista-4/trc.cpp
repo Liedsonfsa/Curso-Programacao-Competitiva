@@ -239,3 +239,5 @@ https://lnkd.in/dume-RRW
 Amazon leadership principles:
 https://lnkd.in/dnigKEXg
 */
+
+// https://maratona.sbc.org.br/fasezero22.html#org10b9618
