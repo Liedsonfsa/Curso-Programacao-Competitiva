@@ -29,6 +29,12 @@ int main() {
 
         cin >> valor;
 
+        int meio = (precos.begin() + precos.end()) / 2;
+
+        if(precos[meio] == n){
+            return meio;
+        }
+
         quantidade = busca(precos, 0, n, valor);
 
         printf("%d\n", quantidade);
