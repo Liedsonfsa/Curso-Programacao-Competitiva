@@ -2,23 +2,14 @@
 
 using namespace std;
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
-#define DIV(a, b) ((a) / (b))
-#define MULT(a, b) ((a) * (b))
-#define SOMA(a, b) ((a) + (b))
-#define SUB(a, b) ((a) - (b))
+#define optimize ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define endl '\n'
 #define pb push_back
+#define ll long long
 
 int main() {
 
-
-
-
-
-
-
+    
 
     return 0;
 }
