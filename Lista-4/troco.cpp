@@ -27,21 +27,50 @@ using namespace std;
 
 int n, m;
 vi moedas;
-int dp[MAXN];
+int dp[MAXN][100];
+
+int troco(int N, int moeda)
+{
+    if (N == 0)
+        return 0;
+ 
+    if (N < 0 || moeda == moedas.size())
+        return INF;
+ 
+    if (dp[N][moeda] != -1)
+        return dp[N][moeda];
+ 
+    int pega = 1 + troco(N - moedas[moeda], moeda);
+    int nao_pega = troco(N, moeda + 1);
+ 
+    return dp[N][moeda] = min(pega, nao_pega);
+}
 
 int main() {
 
     optimize;
 
-    cin >> n >> m;
+    memset(dp, -1, sizeof dp);
 
-    moedas.resize(n);
+    int q;
 
-    //for(int &x : moedas) cin >> x;
+    cin >> q >> n;
 
+    moedas.resize(q);
 
+    for(int i = 0; i < q; i++){
+        cin >> moedas[i];
+    }
 
+    //cin >> n;
 
+    if(troco(n, 0) > 0){
+        cout << "S" << endl;
+    } else{
+        cout << "N" << endl;
+    }
+
+    // https://medium.com/linkapi-solutions/o-que-%C3%A9-big-o-notation-32f171e4a045
 
     return 0;
 }
