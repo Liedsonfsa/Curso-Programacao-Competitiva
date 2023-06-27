@@ -6,6 +6,8 @@ using namespace std;
 #define endl '\n'
 #define pb push_back
 #define ll long long
+#define ALL(x) x.begin(), x.end()
+#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin()) 
 
 int main() {
 
