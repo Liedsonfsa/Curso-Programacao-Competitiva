@@ -1,0 +1,13 @@
+linux:
+compilar:
+g++ -Wall -std=c++17 name_file
+run name_file
+
+passa as entradas e redireciona as saídas:
+time ./a.out < input_file > output_file
+
+verifica as saídas:
+diff problem_output_file output_file
+
+windows:
+g++ --std=c++17 name_file
